@@ -7,14 +7,14 @@
 * @Desc     :
 */
 
-import {JadeLogging} from "../lib/log.js";
-import * as Utils from "../lib/utils.js";
-import {VodDetail, VodShort} from "../lib/vod.js";
-import {_, load, Uri} from "../lib/cat.js";
-import * as HLS from "../lib/hls.js";
-import {hlsCache, tsCache} from "../lib/ffm3u8_open.js";
-import {DanmuSpider} from "../lib/danmuSpider.js";
-import {initAli} from "../lib/ali.js";
+import {JadeLogging} from "./log.js";
+import * as Utils from "./utils.js";
+import {VodDetail, VodShort} from "./vod.js";
+import {_, load, Uri} from "./cat.js";
+import * as HLS from "./hls.js";
+import {hlsCache, tsCache} from "./ffm3u8_open.js";
+import {DanmuSpider} from "./danmuSpider.js";
+import {initAli} from "./ali.js";
 
 class Result {
     constructor() {
