@@ -1,13 +1,13 @@
-//import kunyu77 from './spider/video/kunyu77.js';
-//import kkys from './spider/video/kkys.js';
-//import push from './spider/video/push.js';
-//import alist from './spider/pan/alist.js';
-//import _13bqg from './spider/book/13bqg.js';
-//import copymanga from './spider/book/copymanga.js';
-//import ffm3u8 from './spider/video/ffm3u8.js';
+import kunyu77 from './spider/video/kunyu77.js';
+import kkys from './spider/video/kkys.js';
+import push from './spider/video/push.js';
+import alist from './spider/pan/alist.js';
+import _13bqg from './spider/book/13bqg.js';
+import copymanga from './spider/book/copymanga.js';
+import ffm3u8 from './spider/video/ffm3u8.js';
 import ffm3u8 from './spider/video/cntv.js';
 
-const spiders = [cntv];
+const spiders = [kunyu77, kkys, ffm3u8, cntv, push, alist, _13bqg, copymanga];
 const spiderPrefix = '/spider';
 
 /**
