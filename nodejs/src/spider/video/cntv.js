@@ -7,9 +7,9 @@
 * @Desc     :
 */
 import {Spider} from "./spider.js";
-import {_} from "../lib/cat.js";
-import * as Utils from "../lib/utils.js";
-import {VodDetail, VodShort} from "../lib/vod.js";
+import {_} from "./cat.js";
+import * as Utils from "./utils.js";
+import {VodDetail, VodShort} from "./vod.js";
 class CNTVSpider extends Spider {
     constructor() {
         super();
