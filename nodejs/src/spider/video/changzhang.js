@@ -7,10 +7,10 @@
 * @Desc     :
 */
 import {Spider} from "./spider.js";
-import {_, Crypto, load} from "../lib/cat.js";
-import {VodDetail, VodShort} from "../lib/vod.js";
-import * as Utils from "../lib/utils.js";
-import {detailContent, initAli, playContent} from "../lib/ali.js";
+import {_, Crypto, load} from "./cat.js";
+import {VodDetail, VodShort} from "./vod.js";
+import * as Utils from "./utils.js";
+import {detailContent, initAli, playContent} from "./ali.js";
 
 function cryptJs(text, key, iv, type) {
     let key_value = Crypto.enc.Utf8.parse(key || 'PBfAUnTdMjNDe6pL');
