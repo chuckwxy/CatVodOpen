@@ -342,4 +342,20 @@ export function __jsEvalReturn() {
     };
 }
 
-export {spider, CNTVSpider}
+//export {spider, CNTVSpider}
+export default {
+    meta: {
+        key: 'cntv',
+        name: 'cntv',
+        type: 3,
+    },
+    api: async (fastify) => {
+        fastify.post('/init', init);
+        fastify.post('/home', home);
+        fastify.post('/category', category);
+        fastify.post('/detail', detail);
+        fastify.post('/play', play);
+        fastify.post('/search', search);
+        fastify.get('/test', test);
+    },
+};
