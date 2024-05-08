@@ -6,7 +6,7 @@
 * @Software : Samples
 * @Desc     :
 */
-
+import req from '../../util/req.js';
 import * as Utils from "../lib/utils.js";
 import {_, load} from "../lib/cat.js";
 import {VodDetail, VodShort} from "../lib/vod.js";
@@ -296,13 +296,81 @@ async function search(wd, quick) {
     return await spider.search(wd, quick)
 }
 
-export function __jsEvalReturn() {
+/*export function __jsEvalReturn() {
     return {
         init: init, home: home, homeVod: homeVod, category: category, detail: detail, play: play, search: search,
     };
+}*/
+
+async function test(inReq, outResp) {
+    try {
+        const printErr = function (json) {
+            if (json.statusCode && json.statusCode == 500) {
+                console.error(json);
+            }
+        };
+        const prefix = inReq.server.prefix;
+        const dataResult = {};
+        let resp = await inReq.server.inject().post(`${prefix}/init`);
+        dataResult.init = resp.json();
+        printErr(resp.json());
+        resp = await inReq.server.inject().post(`${prefix}/home`);
+        dataResult.home = resp.json();
+        printErr(resp.json());
+        if (dataResult.home.class.length > 0) {
+            resp = await inReq.server.inject().post(`${prefix}/category`).payload({
+                id: dataResult.home.class[0].type_id,
+                page: 1,
+                filter: true,
+                filters: {},
+            });
+            dataResult.category = resp.json();
+            printErr(resp.json());
+            if (dataResult.category.list.length > 0) {
+                resp = await inReq.server.inject().post(`${prefix}/detail`).payload({
+                    id: dataResult.category.list[0].vod_id, // dataResult.category.list.map((v) => v.vod_id),
+                });
+                dataResult.detail = resp.json();
+                printErr(resp.json());
+                if (dataResult.detail.list && dataResult.detail.list.length > 0) {
+                    dataResult.play = [];
+                    for (const vod of dataResult.detail.list) {
+                        const flags = vod.vod_play_from.split('$$$');
+                        const ids = vod.vod_play_url.split('$$$');
+                        for (let j = 0; j < flags.length; j++) {
+                            const flag = flags[j];
+                            const urls = ids[j].split('#');
+                            for (let i = 0; i < urls.length && i < 2; i++) {
+                                resp = await inReq.server
+                                    .inject()
+                                    .post(`${prefix}/play`)
+                                    .payload({
+                                        flag: flag,
+                                        id: urls[i].split('$')[1],
+                                    });
+                                dataResult.play.push(resp.json());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        resp = await inReq.server.inject().post(`${prefix}/search`).payload({
+            wd: '爱',
+            page: 1,
+        });
+        dataResult.search = resp.json();
+        printErr(resp.json());
+        return dataResult;
+    } catch (err) {
+        console.error(err);
+        outResp.code(500);
+        return { err: err.message, tip: 'check debug console output' };
+    }
 }
-export default {spider}
-/*export default {
+
+//export default {spider}
+export default {
     meta: {
         key: 'xb6v',
         name: '磁力新6V',
@@ -318,4 +386,4 @@ export default {spider}
         fastify.get('/proxy/:what/:ids/:end', proxy);
         fastify.get('/test', test);
     },
-};*/
+};
