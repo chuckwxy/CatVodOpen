@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import NodeRSA from 'node-rsa';
 import CryptoJS from 'crypto-js';
 
-let url = 'http://api.kunyu77.com/';
+let url = 'api.tyun77.cn';
 let device = {};
 let timeOffset = 0;
 const appVer = '2.3.0';
