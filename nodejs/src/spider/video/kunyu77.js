@@ -19,10 +19,10 @@ O8QEtxO9ha3LMmTYTfERzfNmpfDVdV3Rok4eoTzhHmxgqQ0/S0S+FgjHiwrCTFlv
 NCiDhSemnJT+NIzAnMQX4acL5AYNb5PiDD06ZMrtklTua+USY0gSIrG9LctaYvHR
 swIDAQAB
 -----END PUBLIC KEY-----`,
-    'pkcs8-public-pem',
+    /*'pkcs8-public-pem',
     {
         encryptionScheme: 'pkcs1',
-    }
+    }*/    
 );
 
 async function request(reqUrl, ua) {
