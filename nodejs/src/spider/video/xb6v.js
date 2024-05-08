@@ -301,4 +301,21 @@ export function __jsEvalReturn() {
         init: init, home: home, homeVod: homeVod, category: category, detail: detail, play: play, search: search,
     };
 }
-export {spider}
+//export {spider}
+export default {
+    meta: {
+        key: 'xb6v',
+        name: '磁力新6V',
+        type: 3,
+    },
+    api: async (fastify) => {
+        fastify.post('/init', init);
+        fastify.post('/home', home);
+        fastify.post('/category', category);
+        fastify.post('/detail', detail);
+        fastify.post('/play', play);
+        fastify.post('/search', search);
+        fastify.get('/proxy/:what/:ids/:end', proxy);
+        fastify.get('/test', test);
+    },
+};
