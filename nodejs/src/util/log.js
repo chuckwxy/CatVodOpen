@@ -1,4 +1,4 @@
-import "./global.js"
+//import "./global.js"
 const level_list = ["DEBUG", "INFO", "WARNING", "ERROR"];
 const file_path = "log"
 class JadeLogging {
