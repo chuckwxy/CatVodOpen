@@ -6,7 +6,7 @@
 * @Software : Samples
 * @Desc     :
 */
-import {_} from "../lib/cat.js";
+import {_} from "../spider/lib/cat.js";
 import fs from "node:fs";
 import qs from "qs";
 import axios, {toFormData} from "axios";
