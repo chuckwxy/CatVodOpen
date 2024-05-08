@@ -301,8 +301,8 @@ export function __jsEvalReturn() {
         init: init, home: home, homeVod: homeVod, category: category, detail: detail, play: play, search: search,
     };
 }
-//export {spider}
-export default {
+export default {spider}
+/*export default {
     meta: {
         key: 'xb6v',
         name: '磁力新6V',
@@ -318,4 +318,4 @@ export default {
         fastify.get('/proxy/:what/:ids/:end', proxy);
         fastify.get('/test', test);
     },
-};
+};*/
